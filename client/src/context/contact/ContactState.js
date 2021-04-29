@@ -50,6 +50,9 @@ const ContactState = (props) => {
   };
 
   //Delete Contact
+  const deleteContact = (id) => {
+    dispatch({ type: DELETE_CONTACT, payload: id });
+  };
   //Set Current Contact
   //Clear Current Contact
   //Update Contact
@@ -63,6 +66,7 @@ const ContactState = (props) => {
         //anything we want to access from other components including state and actions need to go here.
         contacts: state.contacts,
         addContact,
+        deleteContact,
       }}
     >
       {props.children}
