@@ -40,6 +40,7 @@ const ContactState = (props) => {
       },
     ],
     current: null,
+    filtered: null,
   };
 
   const [state, dispatch] = useReducer(contactReducer, initialState);
@@ -70,8 +71,15 @@ const ContactState = (props) => {
     dispatch({ type: UPDATE_CONTACT, payload: contact });
   };
 
-  //Filter Contact
+  //Filter Contacts
+  const filterContacts = (text) => {
+    dispatch({ type: FILTER_CONTACTS, payload: text });
+  };
+
   //Clear Contact
+  const clearFilter = () => {
+    dispatch({ type: CLEAR_FILTER });
+  };
 
   //return our providers so that we can wrap the application with the context.
   return (
@@ -80,11 +88,14 @@ const ContactState = (props) => {
         //anything we want to access from other components including state and actions need to go here.
         contacts: state.contacts,
         current: state.current,
+        filtered: state.filtered,
         addContact,
         deleteContact,
         setCurrent,
         clearCurrent,
         updateContact,
+        filterContacts,
+        clearFilter,
       }}
     >
       {props.children}
