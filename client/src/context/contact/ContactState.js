@@ -1,5 +1,4 @@
 import React, { useReducer } from "react";
-//import uuid from "uuid";
 import { v4 as uuid } from "uuid";
 
 import ContactContext from "./contactContext";
@@ -81,8 +80,8 @@ const ContactState = (props) => {
     dispatch({ type: CLEAR_FILTER });
   };
 
-  //return our providers so that we can wrap the application with the context.
   return (
+    //return our providers so that we can wrap the application with the context.
     <ContactContext.Provider
       value={{
         //anything we want to access from other components including state and actions need to go here.
